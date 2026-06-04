@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="npu_app" location="/home/test/work_ssx/V2023/vitis/0602_fix_cdma/npu_app" platform="/home/test/work_ssx/V2023/vitis/0602_fix_cdma/npu/export/npu/npu.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="npu_app_system" sysConfig="npu" runtime="C/C++" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="7546751babc78c0797e8f79d50626b13">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.483463186">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.110346904" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

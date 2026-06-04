@@ -1,0 +1,21 @@
+0602_fix_cdma.zip是vitis工程，firmware在npu_app/src下。
+搭配run_case_vgg_0531_1135.tcl这样的tcl使用
+例如测试00001_v013_vgg16_Conv1这个case，将00001_v013_vgg16_Conv1放在case路径下，如/home/test/work_ssx/cases
+
+在xsct命令行依次输入case目录、vitis工程目录，然后source tcl脚本，即可加载数据、烧录bit流、运行firmware
+观察串口输出（波特率9600）
+
+set AUTOTEST_CASE_ROOT /home/test/work_ssx/cases
+
+set AUTOTEST_PROJECT_ROOT /home/test/work_ssx/V2023/vitis/0602_fix_cdma
+
+
+source /home/test/work_ssx/vitis-ws/tcl_scripts/run_case_vgg_0602_1342.tcl
+
+其中tcl第21行
+set RESULT_DIR "/home/test/work_ssx/fpga_results"
+是将当前case测试结果记录在这个路径下的csv文件中
+
+cases下有多个case也会一并运行，linux中终止运行命令是在外部shell终端输入
+touch /home/test/work_ssx/fpga_results/STOP_AUTOTEST
+没有在windows中尝试过
