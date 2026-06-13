@@ -28,6 +28,18 @@ hs_err_pid*
 *.rar
 *.7z
 
+# Reference dumps and local binary test data
+/ref/
+/ref/**/*.zip
+/ref/**/*.bin
+/ref/**/*.a
+/ref/**/build/
+/ref/**/release/
+/ref/**/*.asm
+/ref/**/*.readelf
+/ref/test/test
+/ref/test/test_softmax
+
 # Local test data and generated results
 /cases/
 /fpga_results/
@@ -55,6 +67,7 @@ STOP_AUTOTEST
 *.so
 *.dll
 *.exe
+/host_sim/layernorm/ln_host_sim
 
 # Vivado/Vitis generated hardware outputs
 *.bit

@@ -322,26 +322,35 @@ proc load_case_data {case_dir} {
     set opflow [choose_existing [list \
         [file join $bin_dir dram_new_opflow.bin] \
         [file join $bin_dir dram_opflow.bin] \
+        [file join $bin_dir opflow.bin] \
     ]]
     set cmd [choose_existing [list \
         [file join $bin_dir dram_new_cmd.bin] \
+        [file join $bin_dir cmd.bin] \
         [file join $bin_dir dram_cmd.bin] \
     ]]
-    set weight [choose_existing [list [file join $bin_dir dram_weight.bin]]]
+    set weight [choose_existing [list \
+        [file join $bin_dir dram_weight.bin] \
+        [file join $bin_dir weight.bin] \
+    ]]
     set data [choose_existing [list \
         [file join $case_dir golden dram_input.bin] \
+        [file join $bin_dir dram_input.bin] \
+        [file join $case_dir dram_input.bin] \
+        [file join $bin_dir input.bin] \
+        [file join $case_dir input.bin] \
     ]]
     set golden [choose_existing [list \
         [file join $case_dir golden dram_Relu2.bin] \
         [file join $case_dir golden dram_golden.bin] \
+        [file join $case_dir golden golden.bin] \
+        [file join $bin_dir dram_golden.bin] \
+        [file join $bin_dir golden.bin] \
     ]]
 
     require_file config $config
     require_file opflow $opflow
-    require_file cmd $cmd
     require_file weight $weight
-    require_file data $data
-    require_file golden $golden
 
     write_size_desc $config $config_op $opflow $cmd $weight $data $golden
 
@@ -350,10 +359,16 @@ proc load_case_data {case_dir} {
         dow -data $config_op $::ADDR_CONFIG_OP
     }
     dow -data $opflow $::ADDR_OPFLOW
-    dow -data $cmd $::ADDR_CMD
+    if {[file_size_or_zero $cmd] > 0} {
+        dow -data $cmd $::ADDR_CMD
+    }
     dow -data $weight $::ADDR_WEIGHT
-    dow -data $data $::ADDR_DATA
-    dow -data $golden $::ADDR_GOLDEN
+    if {[file_size_or_zero $data] > 0} {
+        dow -data $data $::ADDR_DATA
+    }
+    if {[file_size_or_zero $golden] > 0} {
+        dow -data $golden $::ADDR_GOLDEN
+    }
 }
 
 proc append_result {csv case_id result detail} {
